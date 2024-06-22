@@ -90,7 +90,8 @@ def chat_with_model(user_input, messages):
 def main():
     st.set_page_config(page_title="Chat with multiple PDFs", page_icon=":magic_wand:")
     st.write(css, unsafe_allow_html=True)
-
+    
+    # Initially all the functions are eampty
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
@@ -101,7 +102,8 @@ def main():
         st.session_state.messages = []
 
     st.header("ChatGPT :magic_wand:")
-
+    
+    # Pdf document uploading , raw text to chunck , chuck to embedding in vector formet and storing conversation chain.
     with st.sidebar:
         pdf_docs = st.file_uploader("Upload your PDF Files and Click on Process", accept_multiple_files=True)
         if st.button("Process"):
@@ -117,6 +119,8 @@ def main():
         # Is the users question from pdf which is stored in faiss library in embedded formet 
         if st.session_state.vector_store:
             user_input(user_question, st.session_state.vector_store)
+            
+        # Is the users questioning generally without adding any pdf
         else:
             response_text = chat_with_model(user_question, st.session_state.messages)
             st.write(bot_template.replace("{{MSG}}", response_text), unsafe_allow_html=True)
