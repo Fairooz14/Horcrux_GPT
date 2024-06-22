@@ -5,3 +5,6 @@ langchain
 faiss-cpu
 google-generative-ai
 langchain-community
+anthropic
+google-generativeai
+numpy
