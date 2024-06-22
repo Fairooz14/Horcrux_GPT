@@ -34,12 +34,7 @@ This project is a Streamlit-based application that allows users to upload multip
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 3. Install the required packages:
    ```sh
-   streamlit==1.14.0
-   python-dotenv==0.21.0
-   PyPDF2==2.10.0
-   langchain==0.0.113
-   faiss-cpu==1.7.2
-   google-generative-ai==0.0.1
+   pip install -r requirements.txt
 4. Add your own Google API key to the  `.env` file:
    ```sh
    GOOGLE_API_KEY=your-google-api-key #from gemini studio
