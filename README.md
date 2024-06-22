@@ -19,7 +19,7 @@ This project is a Streamlit-based application that allows users to upload multip
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- Python 3.x
 - A Gemini AI API key
 
 ### Installation
