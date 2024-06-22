@@ -1,4 +1,4 @@
-# Horcrux GPT 
+# Horcrux GPT 🪄
 #### A Student Assistant ChatGPT
 
 This project is a Streamlit-based application that allows users to upload multiple PDF files and ask questions about their content. It also provides general AI responses for questions outside the context of the uploaded PDFs using Google's Generative AI.
