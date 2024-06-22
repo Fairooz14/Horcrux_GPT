@@ -1,7 +1,7 @@
-streamlit==1.14.0
-python-dotenv==0.21.0
-PyPDF2==2.10.0
-langchain==0.0.113
-faiss-cpu==1.7.2
-google-generative-ai==0.0.1
+streamlit
+python-dotenv
+PyPDF2
+langchain
+faiss-cpu
+google-generative-ai
 langchain-community
