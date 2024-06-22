@@ -14,6 +14,7 @@ load_dotenv()
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
+# LLM Identity define 
 system_instruction = "You are created by Horcrux. Horcrux is a company that works with AI Models. You are a friendly and supportive teaching assistant for students. You are created to help students learn new things."
 model = genai.GenerativeModel(
     model_name="gemini-1.5-pro-latest",
@@ -44,6 +45,7 @@ def get_vector_store(text_chunks):
     vector_store = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vector_store
 
+# Creating Converstion chain for PDF
 def get_conversation_chain():
     prompt_template = """
         Answer the question clearly and precisely. If the context is not provided, return the result as
@@ -52,11 +54,12 @@ def get_conversation_chain():
         Question:\n{question}\n
         Answer:
     """
-    model = ChatGoogleGenerativeAI(model="gemini-pro", temperature=1.0)
+    model = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest", temperature=1.0)
     prompt = PromptTemplate(template=prompt_template, input_variables=['context', 'question'])
     chain = load_qa_chain(model, chain_type='stuff', prompt=prompt)
     return chain
 
+# after user asking a question accessing vesctor  store to find the answer according to the context 
 def user_input(user_question, vector_store):
     embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001')
     docs = vector_store.similarity_search(user_question)
@@ -68,6 +71,7 @@ def user_input(user_question, vector_store):
     )
     st.write(user_template.replace("{{MSG}}", response["output_text"]), unsafe_allow_html=True)
 
+# General text function before uploading any pdf 
 def chat_with_model(user_input, messages):
     messages.append({
         "role": "user", "parts": [user_input]
@@ -110,6 +114,7 @@ def main():
 
     user_question = st.text_input("Ask a Question from the PDF Files or Chat with AI")
     if user_question:
+        # Is the users question from pdf which is stored in faiss library in embedded formet 
         if st.session_state.vector_store:
             user_input(user_question, st.session_state.vector_store)
         else:
