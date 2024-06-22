@@ -26,8 +26,8 @@ This project is a Streamlit-based application that allows users to upload multip
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/Fairooz14/Horcrux_GPT.git
+   cd Horcrux_GPT
 2. Create a virtual environment and activate it:
    ```sh
    python -m venv venv
